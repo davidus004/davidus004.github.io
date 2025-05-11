@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Import the component -->
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DC Motor Controller Board</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+
+
+  <!-- Back link -->
+  <nav class="nav">
+    <div class="container">
+      <a href="index.html" class="logo" >&larr; Back</a>
+      <div class="lang-buttons">
+        <button id="btn-en" class="lang-btn active">EN</button>
+        <button id="btn-it" class="lang-btn">IT</button>
+      </div>
+    </div>
+  </nav>
+
+  <section class="section">
+    <div class="container">
+      <h1 data-key="proj1_title">DC Motor Controller Board</h1>
+
+
+        <img src="images/schematico_motore.png" style="width: calc(90% - 0.5rem);">
+
+    <h2 data-key="proj1_overview_title" style=" margin-top: 30px;">Description</h2>
+      <p class="proj1_overview" data-key="proj1_overview">
+        This schematic represents a DC motor power control circuit that uses a 555 timer integrated circuit configured in astable mode to generate a PWM (Pulse-Width Modulated) signal. The PWM signal allows efficient speed control of a DC motor by varying the duty cycle of the output waveform. A potentiometer (R1) is used to adjust the timing components, which in turn changes the pulse width and thus the speed of the motor. The output from the 555 timer is fed into a two-stage transistor driver (2N1711 and TIP3055), which amplifies the control signal to handle the current required by the motor. A flyback diode (D4) is included to protect the power transistor from voltage spikes caused by the inductive load of the motor. Additional components like a Zener diode (DZ) and filter capacitors (C2, C3, C4) help stabilize the power supply and ensure noise-free operation. An LED indicator (DL) shows the activity of the PWM output, giving visual feedback. The overall design is simple, reliable, and suitable for various applications where controlled DC motor operation is needed, such as in robotics, automation systems, or small electric vehicles.
+      </p>
+
+      <h2>PCB DESIGN</h2>
+      <div class="gallery">
+        <img src="images/PCB_motore.png">
+        <img src="images/Saldatura_motore.png">
+      </div>
+
+
+      
+      
+
+  </section>
+
+  <script>
+    const translations = {
+      en: {
+        proj1_title: "DC Motor Controller Board",
+        proj1_overview: "This schematic represents a DC motor power control circuit that uses a 555 timer integrated circuit configured in astable mode to generate a PWM (Pulse-Width Modulated) signal. The PWM signal allows efficient speed control of a DC motor by varying the duty cycle of the output waveform. A potentiometer (R1) is used to adjust the timing components, which in turn changes the pulse width and thus the speed of the motor. The output from the 555 timer is fed into a two-stage transistor driver (2N1711 and TIP3055), which amplifies the control signal to handle the current required by the motor. A flyback diode (D4) is included to protect the power transistor from voltage spikes caused by the inductive load of the motor. Additional components like a Zener diode (DZ) and filter capacitors (C2, C3, C4) help stabilize the power supply and ensure noise-free operation. An LED indicator (DL) shows the activity of the PWM output, giving visual feedback. The overall design is simple, reliable, and suitable for various applications where controlled DC motor operation is needed, such as in robotics, automation systems, or small electric vehicles.",
+        proj1_overview_title: "Description",
+
+      },
+      it: {
+        proj1_title: "Scheda di Controllo per Motore DC",
+        proj1_overview: "Questo schema rappresenta un circuito di controllo della potenza per motore DC che utilizza un circuito integrato 555 configurato in modalità astabile per generare un segnale PWM (modulazione a larghezza di impulso). Il segnale PWM consente un controllo efficiente della velocità del motore DC variando il duty cycle dell’onda in uscita. Un potenziometro (R1) viene utilizzato per regolare i componenti temporizzatori, modificando così l'ampiezza degli impulsi e quindi la velocità del motore. L'uscita del timer 555 viene inviata a uno stadio di pilotaggio a due transistor (2N1711 e TIP3055), che amplifica il segnale di controllo per gestire la corrente richiesta dal motore. È incluso un diodo di flyback (D4) per proteggere il transistor di potenza da picchi di tensione causati dal carico induttivo del motore. Altri componenti come il diodo Zener (DZ) e i condensatori di filtro (C2, C3, C4) aiutano a stabilizzare l'alimentazione e garantire un funzionamento privo di disturbi. Un LED indicatore (DL) mostra l'attività del segnale PWM, fornendo un riscontro visivo. Il design complessivo è semplice, affidabile e adatto a varie applicazioni dove è richiesto il controllo di un motore DC, come in robotica, sistemi di automazione o piccoli veicoli elettrici.",
+        proj1_overview_title: "Descrizione",
+
+      }
+    };
+  
+    const btnEn = document.getElementById("btn-en");
+    const btnIt = document.getElementById("btn-it");
+  
+    function applyLanguage(lang) {
+      document.querySelectorAll("[data-key]").forEach(el => {
+        const key = el.getAttribute("data-key");
+        const txt = translations[lang][key];
+        if (!txt) return;
+        el.textContent = txt;
+      });
+    }
+  
+    function setActive(lang) {
+      btnEn.classList.toggle("active", lang === "en");
+      btnIt.classList.toggle("active", lang === "it");
+    }
+  
+    btnEn.addEventListener("click", () => {
+      applyLanguage("en");
+      setActive("en");
+    });
+    btnIt.addEventListener("click", () => {
+      applyLanguage("it");
+      setActive("it");
+    });
+  
+    window.addEventListener("DOMContentLoaded", () => {
+      applyLanguage("en");
+      setActive("en");
+    });
+ </script>
+  
+
+
+</body>
+</html>

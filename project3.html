@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Import the component -->
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>"Waveform Generator Board</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+
+
+  <!-- Back link -->
+  <nav class="nav">
+    <div class="container">
+      <a href="index.html" class="logo" >&larr; Back</a>
+      <div class="lang-buttons">
+        <button id="btn-en" class="lang-btn active">EN</button>
+        <button id="btn-it" class="lang-btn">IT</button>
+      </div>
+    </div>
+  </nav>
+
+  <section class="section">
+    <div class="container">
+      <h1 data-key="proj1_title">"Waveform Generator Board</h1>
+
+
+        <img src="images/schematico_genearatore1.png" style="width: calc(90% - 0.5rem);">
+
+    <h2 data-key="proj1_overview_title" style=" margin-top: 30px;">Description</h2>
+      <p class="proj1_overview" data-key="proj1_overview">
+        The circuit generates three different waveforms — square, triangular, and sawtooth — commonly used in various electronic applications. These waveforms are produced using different configurations of operational amplifiers (op-amps). 
+      Square Wave Generation – Schmitt Trigger
+A Schmitt Trigger is a type of comparator with hysteresis. It provides a stable square wave output by switching its output between high and low states when the input crosses certain threshold voltages. This hysteresis prevents noise from causing false triggers and ensures clean transitions.
+
+Triangular Wave Generation – Integrator
+An integrator circuit, built with an op-amp and a capacitor in the feedback loop, generates a triangular waveform when fed with a square wave input. The integrator converts the high and low levels of the square wave into a linearly increasing and decreasing voltage, resulting in a triangular wave.
+
+Sawtooth Wave Generation – Ramp Generator
+A sawtooth waveform can be created using an op-amp configured as a ramp generator. Unlike the symmetrical rise and fall of a triangular wave, a sawtooth wave has a linear ramp-up followed by a sharp drop (reset) to its initial value. This asymmetry is useful in timing and sweep applications.
+      </p>
+
+      <h2>PCB DESIGN</h2>
+      <div class="gallery">
+        <img src="images/PCB_generatore.png">
+        <img src="images/Saldatura_generatore.png">
+      </div>
+
+      <h2 style=" margin-top: 30px;">TEST 1</h2>
+      <div style="width: calc(90% - 0.5rem);">
+        <img src="images/test1.png">
+      </div>
+
+      <h2 style=" margin-top: 30px;">TEST 2</h2>
+      <div style="width: calc(90% - 0.5rem);">
+         <img src="images/test2.png">
+      </div>
+
+      
+      
+
+
+<!-- Image gallery
+      <h2>Technical Details</h2>
+      <p>
+      </p>-->
+
+    </div>
+  </section>
+
+  <script>
+    const translations = {
+      en: {
+        proj1_title: "Waveform Generator Board",
+        proj1_overview: "The circuit generates three different waveforms — square, triangular, and sawtooth — commonly used in various electronic applications. These waveforms are produced using different configurations of operational amplifiers (op-amps).<br><br>Square Wave Generation – Schmitt Trigger<br>A Schmitt Trigger is a type of comparator with hysteresis. It provides a stable square wave output by switching its output between high and low states when the input crosses certain threshold voltages. This hysteresis prevents noise from causing false triggers and ensures clean transitions.<br><br>Triangular Wave Generation – Integrator<br>An integrator circuit, built with an op-amp and a capacitor in the feedback loop, generates a triangular waveform when fed with a square wave input. The integrator converts the high and low levels of the square wave into a linearly increasing and decreasing voltage, resulting in a triangular wave.<br><br>Sawtooth Wave Generation – Ramp Generator <br>A sawtooth waveform can be created using an op-amp configured as a ramp generator. Unlike the symmetrical rise and fall of a triangular wave, a sawtooth wave has a linear ramp-up followed by a sharp drop (reset) to its initial value. This asymmetry is useful in timing and sweep applications.",
+        proj1_overview_title: "Description",
+      },
+      it: {
+        proj1_title: "Generatore Di Forme d'Onda",
+        proj1_overview: "Il circuito genera tre diverse forme d'onda — quadrata, triangolare e a dente di sega — comunemente utilizzate in varie applicazioni elettroniche. Queste forme d'onda sono prodotte utilizzando diverse configurazioni di amplificatori operazionali (op-amp).<br><br>Generazione di onda quadrata – Schmitt Trigger<br>Uno Schmitt Trigger è un tipo di comparatore con isteresi. Fornisce un'uscita a onda quadrata stabile passando dallo stato alto a quello basso (e viceversa) quando l'ingresso supera determinate soglie. Questa isteresi impedisce che il rumore causi commutazioni errate e garantisce transizioni pulite.<br><br>Generazione di onda triangolare – Integratore<br>Un circuito integratore, costruito con un op-amp e un condensatore nel loop di retroazione, genera un'onda triangolare quando riceve in ingresso un segnale a onda quadrata. L'integratore converte i livelli alti e bassi dell'onda quadrata in una tensione che aumenta e diminuisce linearmente, producendo così un'onda triangolare.<br><br>Generazione di onda a dente di sega – Generatore di rampa<br>Un'onda a dente di sega può essere creata utilizzando un op-amp configurato come generatore di rampa. A differenza dell'onda triangolare, che ha una salita e discesa simmetriche, l'onda a dente di sega ha una salita lineare seguita da un rapido ritorno al valore iniziale. Questa asimmetria è utile in applicazioni di temporizzazione e di sweep.",
+        proj1_overview_title: "Description",
+      }
+    };
+  
+    const btnEn = document.getElementById("btn-en");
+    const btnIt = document.getElementById("btn-it");
+  
+    function applyLanguage(lang) {
+      document.querySelectorAll("[data-key]").forEach(el => {
+        const key = el.getAttribute("data-key");
+        const txt = translations[lang][key];
+        if (!txt) return;
+        el.innerHTML = txt
+      });
+    }
+  
+    function setActive(lang) {
+      btnEn.classList.toggle("active", lang === "en");
+      btnIt.classList.toggle("active", lang === "it");
+    }
+  
+    btnEn.addEventListener("click", () => {
+      applyLanguage("en");
+      setActive("en");
+    });
+    btnIt.addEventListener("click", () => {
+      applyLanguage("it");
+      setActive("it");
+    });
+  
+    window.addEventListener("DOMContentLoaded", () => {
+      applyLanguage("en");
+      setActive("en");
+    });
+ </script>
+  
+
+
+</body>
+</html>

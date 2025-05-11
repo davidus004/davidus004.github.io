@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Import the component -->
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>3D Printed Bionic Hand</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+
+
+  <!-- Back link -->
+  <nav class="nav">
+    <div class="container">
+      <a href="index.html" class="logo" >&larr; Back</a>
+      <div class="lang-buttons">
+        <button id="btn-en" class="lang-btn active">EN</button>
+        <button id="btn-it" class="lang-btn">IT</button>
+      </div>
+    </div>
+  </nav>
+
+  <section class="section">
+    <div class="container">
+      <h1 data-key="proj1_title">3D Printed Bionic Hand</h1>
+
+  <model-viewer
+    src="braccino.glb"
+    alt="A robotic hand"
+    auto-rotate
+    camera-controls
+    style="width: 100%; height: 500px; background-color: #000000;">
+  </model-viewer>
+
+    <h2 data-key="proj1_overview_title">Description</h2>
+      <p class="proj1_overview" data-key="proj1_overview">
+        This project showcases a functional, low-cost bionic hand built using 3D printing technology and powered by the ESP32 microcontroller. 
+        Designed to mimic the natural movements of a human hand, the bionic hand features articulated fingers driven by servo motors, controlled through EMG (electromyography) signals or other input methods such as Bluetooth or Wi-Fi via the ESP32.
+        <br>The hand structure is printed using PLA for durability and lightweight performance, while the ESP32 handles real-time signal processing and wireless communication. 
+      </p>
+
+
+      <div class="gallery">
+        <img src="images/dita.png">
+        <img src="images/app.png" style="height: 400px; width: auto;">
+      </div>
+
+      <h2 data-key="proj1_features_title" style="margin-top: 10px;">Key Features</h2>
+      <ul>
+        <li data-key="proj1_feature1">Li-Po Battery Pack (7.4 V, 2000 mAh)</li>
+        <li data-key="proj1_feature2">Fully 3D-printed mechanical structure</li>
+        <li data-key="proj1_feature3">ESP32 microcontroller for control and connectivity</li>
+        <li data-key="proj1_feature4">Servo motor actuation for finger movement</li>
+        <li data-key="proj1_feature5">EMG signal control or remote control via Bluetooth/Wi-Fi</li>
+        <li data-key="proj1_feature6">Modular and customizable design</li>
+        <li >Computer vision</li>
+      </ul>
+<!-- Image gallery
+      <h2>Technical Details</h2>
+      <p>
+      </p>-->
+
+    </div>
+  </section>
+
+  <script>
+    const translations = {
+      en: {
+        proj1_title: "3D Printed Bionic Hand",
+        proj1_overview: "This project showcases a functional, low-cost bionic hand built using 3D printing technology and powered by the ESP32 microcontroller. <br>Designed to mimic the natural movements of a human hand, the bionic hand features articulated fingers driven by servo motors, controlled through EMG (electromyography) signals or other input methods such as Bluetooth or Wi-Fi via the ESP32. <br>The hand structure is printed using PLA for durability and lightweight performance, while the ESP32 handles real-time signal processing and wireless communication wireless communication with smartphone and webcam. <br>There is also an LCD display on the front to show various data, such as battery level and connection mode.<br>Most of the code is written in C, which is used for directly controlling the actuators and the display, while Python is used for processing data from the sensors and implementing computer vision using a webcam.",
+        proj1_overview_title: "Description",
+        proj1_features_title: "Key Features",
+        proj1_feature1: "Li-Po Battery Pack (7.4 V, 2000 mAh)",
+        proj1_feature2: "Fully 3D-printed mechanical structure",
+        proj1_feature3: "ESP32 microcontroller for control and connectivity",
+        proj1_feature4: "Servo motor actuation for finger movement",
+        proj1_feature5: "EMG signal control or remote control via Bluetooth/Wi-Fi",
+        proj1_feature6: "Modular and customizable design"
+      },
+      it: {
+        proj1_title: "Mano Bionica Stampata In 3D",
+        proj1_overview: "Questo progetto presenta una mano bionica funzionale e a basso costo, realizzata con tecnologia di stampa 3D e alimentata dal microcontrollore ESP32. <br>Progettata per imitare i movimenti naturali di una mano umana, la mano bionica è dotata di dita articolate azionate da servomotori, controllati tramite segnali EMG (elettromiografia) o altri metodi di input come Bluetooth o Wi-Fi tramite l'ESP32. <br>La struttura della mano è stampata in PLA, un materiale resistente e leggero, mentre l'ESP32 si occupa dell'elaborazione in tempo reale dei segnali e della comunicazione wireless con smartphone e webcam. <br>È inoltre presente un display LCD frontale che mostra varie informazioni, come il livello della batteria e la modalità di connessione. <br>La maggior parte del codice è scritta in C, utilizzato per il controllo diretto degli attuatori e del display, mentre Python viene impiegato per l’elaborazione dei dati provenienti dai sensori e per l’implementazione della computer vision tramite webcam.",
+        proj1_overview_title: "Description",
+        proj1_features_title: "Caratteristiche Principali",
+        proj1_feature1: "Batteria Li-Po (7,4 V, 2000 mAh)",
+        proj1_feature2: "Struttura meccanica completamente stampata in 3D",
+        proj1_feature3: "Microcontrollore ESP32 per controllo e connettività",
+        proj1_feature4: "Movimento delle dita tramite servomotori",
+        proj1_feature5: "Controllo tramite segnali EMG o da remoto via Bluetooth/Wi-Fi",
+        proj1_feature6: "Design modulare e personalizzabile"
+      }
+    };
+  
+    const btnEn = document.getElementById("btn-en");
+    const btnIt = document.getElementById("btn-it");
+  
+    function applyLanguage(lang) {
+      document.querySelectorAll("[data-key]").forEach(el => {
+        const key = el.getAttribute("data-key");
+        const txt = translations[lang][key];
+        if (!txt) return;
+        el.innerHTML = txt
+      });
+    }
+  
+    function setActive(lang) {
+      btnEn.classList.toggle("active", lang === "en");
+      btnIt.classList.toggle("active", lang === "it");
+    }
+  
+    btnEn.addEventListener("click", () => {
+      applyLanguage("en");
+      setActive("en");
+    });
+    btnIt.addEventListener("click", () => {
+      applyLanguage("it");
+      setActive("it");
+    });
+  
+    window.addEventListener("DOMContentLoaded", () => {
+      applyLanguage("en");
+      setActive("en");
+    });
+ </script>
+  
+
+
+</body>
+</html>

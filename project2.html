@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Import the component -->
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Data Acquisition Board</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+
+
+  <!-- Back link -->
+  <nav class="nav">
+    <div class="container">
+      <a href="index.html" class="logo" >&larr; Back</a>
+      <div class="lang-buttons">
+        <button id="btn-en" class="lang-btn active">EN</button>
+        <button id="btn-it" class="lang-btn">IT</button>
+      </div>
+    </div>
+  </nav>
+
+  <section class="section">
+    <div class="container">
+      <h1 data-key="proj1_title">Data Acquisition Board</h1>
+
+     <div class="gallery">
+        <img src="images/schematico_acquisizione_dati.jpg"  />
+        <img src="images/schematico_ricezione_dati.jpg"  />
+      </div>
+
+    <h2 data-key="proj1_overview_title" style=" margin-top: 30px;">Description</h2>
+      <p class="proj1_overview" data-key="proj1_overview">
+        The circuits shown form a system that handles the acquisition, transmission, reception, and processing of signals coming from two transducers, such as the AD590 temperature sensor. The sensor converts the physical quantity (temperature) into an electrical signal, in this case a current proportional to the measured temperature. The first block of the system is designed to condition the input signal: it converts the current from the sensor into a proportional voltage. A second block then converts this voltage into a pulse train whose frequency is proportional to the input voltage. This conversion is essential for long-distance transmission, as pulse signals are far less susceptible to electromagnetic interference than continuous analog signals. Once received, the pulse train is further processed. The circuit comprises two identical parallel sections (one per transducer), each of which converts the incoming pulses back into a voltage. This voltage is then filtered to remove any high-frequency noise. Finally, the two conditioned signals are combined, either averaged or difference-amplified, to optimize the system’s sensitivity. 
+      </p>
+
+      <h2>PCB DESIGN 1</h2>
+      <div class="gallery">
+        <img src="images/PCB_acquisizione.png"  />
+        <img src="images/Saldatura_Acquisizione.png"  />
+      </div>
+
+      <h2 style=" margin-top: 30px;">PCB DESIGN 2</h2>
+      <div class="gallery">
+        <img src="images/PCB_ricezione.png"  />
+        <img src="images/Saldatura_ricezione.png"  />
+      </div>
+
+
+      
+
+
+<!-- Image gallery
+      <h2>Technical Details</h2>
+      <p>
+      </p>-->
+
+    </div>
+  </section>
+
+  <script>
+    const translations = {
+      en: {
+        proj1_title: "Data Acquisition Board",
+        proj1_overview: "The circuits shown form a system that handles the acquisition, transmission, reception, and processing of signals coming from two transducers, such as the AD590 temperature sensor. The sensor converts the physical quantity (temperature) into an electrical signal, in this case a current proportional to the measured temperature. <br>The first block of the system is designed to condition the input signal: it converts the current from the sensor into a proportional voltage. A second block then converts this voltage into a pulse train whose frequency is proportional to the input voltage. <br>This conversion is essential for long-distance transmission, as pulse signals are far less susceptible to electromagnetic interference than continuous analog signals. Once received, the pulse train is further processed. <br>The circuit comprises two identical parallel sections (one per transducer), each of which converts the incoming pulses back into a voltage. This voltage is then filtered to remove any high-frequency noise. <br>Finally, the two conditioned signals are combined, either averaged or difference-amplified, to optimize the system’s sensitivity.",
+        proj1_overview_title: "Description",
+      },
+      it: {
+        proj1_title: "Scheda Di Acquisizione Dati",
+        proj1_overview: "Il circuiti rappresentati compongono un sistema che gestisce l’acquisizione, la trasmissione, la ricezione e l’elaborazione di segnali provenienti da due trasduttori, come nel caso del sensore di temperatura AD590. Il sensore converte la grandezza fisica (temperatura) in un segnale elettrico, che in questo caso è una corrente proporzionale alla temperatura rilevata. <br>Il primo blocco del sistema è progettato per condizionare il segnale in ingresso. Esso converte la corrente proveniente dal sensore in una tensione proporzionale. Successivamente, un secondo blocco converte questa tensione in un segnale impulsivo, con una frequenza proporzionale alla tensione in ingresso. <br>Questo processo è essenziale per la trasmissione del segnale su lunghe distanze, poiché i segnali impulsivi sono meno suscettibili a disturbi elettromagnetici rispetto ai segnali analogici continui. <br>Il segnale impulsivo ricevuto viene successivamente elaborato. Il circuito include due sezioni parallele identiche, una per ciascun trasduttore, che ricevono i segnali e li convertono nuovamente in tensione. Dopo questa conversione, il segnale viene filtrato per rimuovere eventuali disturbi ad alta frequenza. <br>Infine, i segnali provenienti dai due trasduttori vengono combinati, permettendo operazioni come la media o l'amplificazione della differenza, al fine di ottimizzare la sensibilità del sistema.",
+        proj1_overview_title: "Description",
+      }
+    };
+  
+    const btnEn = document.getElementById("btn-en");
+    const btnIt = document.getElementById("btn-it");
+  
+    function applyLanguage(lang) {
+      document.querySelectorAll("[data-key]").forEach(el => {
+        const key = el.getAttribute("data-key");
+        const txt = translations[lang][key];
+        if (!txt) return;
+        el.innerHTML = txt
+      });
+    }
+  
+    function setActive(lang) {
+      btnEn.classList.toggle("active", lang === "en");
+      btnIt.classList.toggle("active", lang === "it");
+    }
+  
+    btnEn.addEventListener("click", () => {
+      applyLanguage("en");
+      setActive("en");
+    });
+    btnIt.addEventListener("click", () => {
+      applyLanguage("it");
+      setActive("it");
+    });
+  
+    window.addEventListener("DOMContentLoaded", () => {
+      applyLanguage("en");
+      setActive("en");
+    });
+ </script>
+  
+
+
+</body>
+</html>

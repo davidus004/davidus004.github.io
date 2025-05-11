@@ -1,0 +1,253 @@
+/* Reset & globals */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* NAVIGATION */
+.nav {
+  background: #222;
+  color: #fff;
+  padding: 0.5rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav .logo {
+  font-size: 1.4rem;
+  text-decoration: none;
+  color: #fff;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+.nav-links li {
+  margin-left: 1.5rem;
+}
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Language buttons */
+.lang-buttons {
+  display: inline-flex;
+  margin-left: 1rem;
+}
+.lang-btn {
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 0.3rem 0.6rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 0.9rem;
+  transition: background 0.25s, color 0.25s;
+}
+.lang-btn:last-child {
+  margin-right: 0;
+}
+.lang-btn.active,
+.lang-btn:hover {
+  background: #fff;
+  color: #222;
+}
+
+/* ABOUT */
+.me {
+  padding: 4rem 0;
+  background: #5eb2cc;
+}
+.me .container {
+  display: flex;
+  align-items: center;
+}
+.profile-pic {
+  width: 150px;         
+  height: 150px;
+  max-width: 150px;
+  border-radius: 50%;
+  margin-right: 2rem;
+  object-fit: cover;
+}
+.me-text h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+.me-text p {
+  font-size: 1.1rem;
+}
+
+/* SECTIONS */
+.section {
+  padding: 3rem 0;
+}
+.alt-bg {
+  background: #fafafa;
+}
+.container {
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* SKILLS GRID */
+/* Contenitore wrapper per posizionare frecce */
+.skills-wrapper {
+  position: relative;
+  overflow: hidden;
+  margin: 2rem 0;
+}
+
+/* Frecce */
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: rgba(0,0,0,0.5);
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.left-btn { left: 10px; }
+.right-btn { right: 10px; }
+.scroll-btn:hover {
+  background: rgba(0,0,0,0.8);
+}
+
+/* Scroll container */
+.skills-scroll {
+  overflow: hidden;
+}
+
+/* Track auto-scroll */
+.skills-track {
+  display: flex;
+  align-items: center;
+  animation: scroll-left 30s linear infinite;
+}
+
+/* Pausa al passaggio */
+.skills-wrapper:hover .skills-track {
+  animation-play-state: paused;
+}
+
+/* Skill-card */
+.skill-item {
+  flex: 0 0 auto;
+  background: linear-gradient(135deg, #6b73ff 0%, #000dff 100%);
+  color: #fff;
+  font-size: 1.5rem;
+  padding: 20px 35px;
+  margin-right: 1.5rem;
+  border-radius: 14px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+  white-space: nowrap;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+  transition: transform 0.3s;
+}
+.skill-item:hover {
+  transform: scale(1.1);
+}
+
+/* Animazione keyframes */
+@keyframes scroll-left {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* PROJECT CARDS */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+.project-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+.project-card h3 {
+  margin-bottom: 0.8rem;
+}
+.project-card p {
+  flex-grow: 1;
+  margin-bottom: 1rem;
+}
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  padding: 0.6rem 1.2rem;
+  border: 2px solid #333;
+  border-radius: 3px;
+  font-weight: bold;
+  text-align: center;
+  transition: background 0.3s, color 0.3s;
+}
+.btn:hover {
+  background: #333;
+  color: #fff;
+}
+
+/* CONTACT FORM */
+.contact-form {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.contact-form label {
+  font-weight: bold;
+}
+.contact-form input,
+.contact-form textarea {
+  padding: 0.6rem;
+  border: 1px solid #110a5d;}
+
+.proj1_overview{
+  margin-bottom: 30px;
+  text-align: justify;
+}
+
+
+
+.gallery {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+.gallery img {
+    width: calc(50% - 0.5rem);
+    border-radius: 5px;
+    object-fit: cover;
+  }
+  @media (max-width: 600px) {
+    .gallery img {
+      width: 100%;
+    }
+  }
+  
