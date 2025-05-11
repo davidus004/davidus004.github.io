@@ -189,6 +189,7 @@ body {
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
+  text-align: justify;
 }
 .project-card h3 {
   margin-bottom: 0.8rem;
